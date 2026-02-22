@@ -1,0 +1,4 @@
+gspread
+streamlit
+google-auth
+google-auth-oauthlib
