@@ -66,7 +66,7 @@ def Submit() -> None:
             newCompanyIDs = dict(zip(companyNamesToAdd, newCompanyIDs))
         # Inevitably, there are people to add, so add them as well
         peopleToAdd = [{'Company ID':newCompanyIDs[itm[1]] if itm[1] in newCompanyIDs else pL.Search.Company.ByName(itm[1])[0]['Company ID'],
-                       'First Name':itm[2], 'Last Name':itm[3]
+                       'First Name':itm[2], 'Last Name':itm[3], 'Role':'', 'Phone Number':'', 'Email':'','New Entry':True
                     } for itm in sl.session_state.addedNames]
         newPeopleIDs = pL.AddPeople(peopleToAdd)
         pL.LogPresence([{'Project Code':0, 'Project Name':'', 'Company ID':peopleToAdd[i]['Company ID'], 'Person ID':newPeopleIDs[i],
