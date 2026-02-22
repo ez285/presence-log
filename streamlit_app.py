@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     pass
-from enum import Enum, auto
+from enum import IntEnum
 import streamlit as sl
 from datetime import date
 from google_sheet import PresenceLog
@@ -12,13 +12,13 @@ def GetPresenceLog() -> PresenceLog:
     return PresenceLog()
 pL = GetPresenceLog()
 
-class StreamlitMode(Enum):
-    NameInputStandard = auto()
-    NameInputNewCompany = auto()
-    NameInputNewPeople = auto()
-    InOut = auto()
-    FullListToday = auto()
-    InToday = auto()
+class StreamlitMode(IntEnum):
+    NameInputStandard = 1
+    NameInputNewCompany = 2
+    NameInputNewPeople = 3
+    InOut = 4
+    FullListToday = 5
+    InToday = 6
 
 def ShowDateCompany() -> None:
     sl.session_state.setdefault('selectedDate', date.today())
@@ -107,6 +107,7 @@ if sl.session_state.Mode != sl.session_state.PreviousMode:
     
 sl.write(sl.session_state.Mode)
 sl.write(StreamlitMode.NameInputStandard)
+sl.write(sl.session_state.Mode == StreamlitMode.NameInputStandard)
 
 if sl.session_state.Mode == StreamlitMode.NameInputStandard:
     ShowDateCompany()
@@ -133,6 +134,7 @@ elif sl.session_state.Mode == StreamlitMode.FullListToday:
 elif sl.session_state.Mode == StreamlitMode.InToday:
 
     pass
+
 
 
 
