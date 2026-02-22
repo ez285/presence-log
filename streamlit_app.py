@@ -100,16 +100,12 @@ if 'addedNames' not in sl.session_state:
     sl.session_state.addedNames = []
 
 # Second thing, reset state variable if mode changes
-if sl.session_state.Mode != sl.session_state.PreviousMode:
+if sl.session_state.Mode.value != sl.session_state.PreviousMode.value:
     sl.session_state.selectedNameIDs = []
     sl.session_state.addedNames = []
     sl.session_state.PreviousMode = sl.session_state.Mode
     
-sl.write(sl.session_state.Mode)
-sl.write(StreamlitMode.NameInputStandard)
-sl.write(sl.session_state.Mode.value == StreamlitMode.NameInputStandard.value)
-
-if sl.session_state.Mode == StreamlitMode.NameInputStandard:
+if sl.session_state.Mode.value == StreamlitMode.NameInputStandard.value:
     ShowDateCompany()
     if sl.session_state.selectedCompany == 'Add New':
         sl.session_state.PreviousMode = sl.session_state.Mode
@@ -118,7 +114,7 @@ if sl.session_state.Mode == StreamlitMode.NameInputStandard:
     ShowNamesForCompany()
     ShowPersonellInput(sl.session_state.selectedCompany)
     ShowSubmitButton()
-elif sl.session_state.Mode == StreamlitMode.NameInputNewCompany:
+elif sl.session_state.Mode.value == StreamlitMode.NameInputNewCompany.value:
     ShowDateCompany()
     if sl.session_state.selectedCompany != 'Add New':
         sl.session_state.PreviousMode = sl.session_state.Mode
@@ -127,17 +123,9 @@ elif sl.session_state.Mode == StreamlitMode.NameInputNewCompany:
     sl.text_input('Company Name', label_visibility='visible', key='newCompany')
     ShowPersonellInput(sl.session_state.newCompany)
     ShowSubmitButton()
-elif sl.session_state.Mode == StreamlitMode.InOut:
+elif sl.session_state.Mode.value == StreamlitMode.InOut.value:
     pass
-elif sl.session_state.Mode == StreamlitMode.FullListToday:
+elif sl.session_state.Mode.value == StreamlitMode.FullListToday.value:
     pass
-elif sl.session_state.Mode == StreamlitMode.InToday:
-
+elif sl.session_state.Mode.value == StreamlitMode.InToday.value:
     pass
-
-
-
-
-
-
-
