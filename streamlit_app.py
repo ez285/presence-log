@@ -105,7 +105,7 @@ if sl.session_state.Mode != sl.session_state.PreviousMode:
     sl.session_state.addedNames = []
     sl.session_state.PreviousMode = sl.session_state.Mode
     
-sl.write("fileWatcherType =", st.get_option("server.fileWatcherType"))
+sl.write("fileWatcherType =", sl.get_option("server.fileWatcherType"))
 
 if sl.session_state.Mode == StreamlitMode.NameInputStandard:
     ShowDateCompany()
@@ -132,3 +132,4 @@ elif sl.session_state.Mode == StreamlitMode.FullListToday:
 elif sl.session_state.Mode == StreamlitMode.InToday:
 
     pass
+
