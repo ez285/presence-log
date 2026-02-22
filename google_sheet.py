@@ -71,7 +71,7 @@ class PresenceLog:
     def LogPresence(self, data:list[dict[str, int|float|str]]) -> None:
         if list(data[0].keys()) != list(self.Data.PresenceLog[0].keys()):
             raise ValueError('Given titles do not match the expected ones')
-        self.Sheets.PresenceLog.append_rows([0, '', itm['Company ID'], itm['Person ID'], itm['In'], itm['Out']] for itm in data], insert_data_option=gs.utils.InsertDataOption.insert_rows, table_range='A1')
+        self.Sheets.PresenceLog.append_rows([[0, '', itm['Company ID'], itm['Person ID'], itm['In'], itm['Out']]] for itm in data], insert_data_option=gs.utils.InsertDataOption.insert_rows, table_range='A1')
     
     def AddCompanies(self, data:list[dict[str, int|float|str]]) -> list[int]:
         if self.Data.Companies[0].keys() - data[0].keys() != {'Company ID'}:
@@ -114,3 +114,4 @@ class PresenceLog:
         companyID = self.Search.Company.ByName(companyName)[0]['Company ID']
 
         return [itm for itm in self.Data.People if itm['Company ID'] == companyID]
+
