@@ -107,7 +107,7 @@ if sl.session_state.Mode != sl.session_state.PreviousMode:
     
 sl.write(sl.session_state.Mode)
 sl.write(StreamlitMode.NameInputStandard)
-sl.write(sl.session_state.Mode == StreamlitMode.NameInputStandard)
+sl.write(sl.session_state.Mode.value == StreamlitMode.NameInputStandard.value)
 
 if sl.session_state.Mode == StreamlitMode.NameInputStandard:
     ShowDateCompany()
@@ -134,6 +134,7 @@ elif sl.session_state.Mode == StreamlitMode.FullListToday:
 elif sl.session_state.Mode == StreamlitMode.InToday:
 
     pass
+
 
 
 
