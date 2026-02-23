@@ -34,7 +34,7 @@ def ShowPersonellInput(companyName:str) -> None:
     with right:
         sl.button('Add', use_container_width=True, on_click=lambda companyName=companyName:AddNames(companyName))
     sl.markdown('**** Names added ****')
-    sl.dataframe([dict(zip(['Date', 'Company Name', 'First Name', 'Last Name'], itm)) for itm in sl.session_state.addednames])
+    sl.dataframe([dict(zip(['Date', 'Company Name', 'First Name', 'Last Name'], itm)) for itm in sl.session_state.addedNames])
     #sl.text('\n'.join(['\t'.join([itm2.__str__() for itm2 in itm]) for itm in sl.session_state.addedNames]))
 
 def ShowNamesForCompany() -> None:
