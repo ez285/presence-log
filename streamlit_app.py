@@ -81,8 +81,6 @@ def Submit() -> None:
     sl.session_state.PreviousMode = sl.session_state.Mode
     sl.session_state.Mode = StreamlitMode.NameInputStandard
     GetPresenceLog.clear()
-    sl.rerun()
-
 
 def AddNames(companyName:str) -> None:
     sl.session_state.addedNames.append([sl.session_state.selectedDate, companyName, sl.session_state.firstName, sl.session_state.lastName])
