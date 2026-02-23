@@ -74,11 +74,8 @@ def Submit() -> None:
                         } for i in range(0, newPeopleIDs.__len__())])
     # clear state variables and rerun from the beginning
     for itm in list(sl.session_state.keys()):
-        sl.text(itm)
         if itm.startswith('person_'): # type:ignore
-            sl.text('     handled')
             sl.session_state[itm] = False
-            del sl.session_state[itm]
     sl.session_state.selectedNameIDs = []
     sl.session_state.addedNames = []
 
