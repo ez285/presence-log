@@ -75,9 +75,11 @@ def Submit() -> None:
     # clear state variables and rerun from the beginning
     for itm in list(sl.session_state.keys()):
         if itm.startswith('person_'): # type:ignore
+            sl.session_state[itm] = False
             del sl.session_state[itm]
     sl.session_state.selectedNameIDs = []
     sl.session_state.addedNames = []
+
     sl.session_state.PreviousMode = sl.session_state.Mode
     sl.session_state.Mode = StreamlitMode.NameInputStandard
     GetPresenceLog.clear()
